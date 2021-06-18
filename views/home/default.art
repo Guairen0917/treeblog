@@ -1,0 +1,76 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+    <link rel="stylesheet" href="/home/css/home.css">
+{{/block}}
+
+{{block 'main'}}
+    {{include './common/header.art'}}
+    <!-- 文章展示 -->
+    <section id="article">
+        <div class="container">
+            <ul class="list-group">
+                {{each resultList.records}}
+                <li class="col-md-6 list-group-item list">
+                    <a href="/home/article?id={{@$value._id}}" class="thumbnail">
+                        <img src="{{$value.cover}}" style="width:100%; height: 35vh;">
+                    </a>
+                    <div class="content">
+                        <a href="/home/article?id={{@$value._id}}">
+                            <h3>{{$value.title}}</h3>
+                        </a>
+                        <div class="article-info">
+                            <span class="author text-primary">{{$value.author.username}}</span>
+                            <span class="mb-1 text-muted">{{dateFormat($value.publishDate, 'yyyy-mm-dd')}}</span>
+                        </div>
+                        <div class="brief text-left" style="height: 15vh;">
+                            {{@$value.content.replace(/<[^>]+>/g,'').substr(0,100) + '...'}}
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </section>
+    <!-- 文章展示 -->
+
+    <!-- 分页 -->
+    <section>
+        <div class="container">
+            <div style="display: flex; flex-direction: column;justify-content: center;align-items: center;">
+                <ul class="pagination pagination-lg">
+                    {{if resultList.page > 1}}
+                    <li><a href="/home/?page={{resultList.page - 1}}">&laquo;</a></li>
+                    {{/if}}
+                    {{each resultList.display}}
+                    <li><a href="/home/?page={{$value}}" class="{{$value == resultList.page ? 'active' : ''}}">{{$value}}</a></li>
+                    {{/each}}
+                    {{if resultList.page < resultList.pages}}
+                    <li><a href="/home/?page={{resultList.page - 0 + 1}}">&raquo;</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 分页 -->
+
+    <!-- Go Top BTN -->
+    <button class="goTop iconfont">&#xe614;</button>
+{{/block}}
+
+{{block 'script'}}
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if (this.scrollY > 20) {
+                    $(".goTop").fadeIn();
+                } else {
+                    $(".goTop").fadeOut();
+                }
+            });
+            $(".goTop").click(function() {
+                scroll(0, 0)
+            });
+        })
+    </script>
+{{/block}}

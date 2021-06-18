@@ -1,0 +1,49 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+    <div id="login-box">
+        <div class="login-body">
+            <div class="login-container">
+                <!-- <h4 class="title">登录</h4> -->
+                <div class="login">
+                    <form action="/admin/login" method="post" id="loginForm">
+                        <div class="form-group">
+                            <label>邮箱</label>
+                            <input name="email" type="email" class="form-control" placeholder="请输入登录邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label>密码</label>
+                            <input name="password" type="password" class="form-control" placeholder="请输入登录密码">
+                        </div>
+                        <button type="submit">登录</button>
+                    </form>
+                    <div class="tip">没有账号？<a href="/home/register">注册</a>起飞！</div>
+                    <div class="tips">{{msg}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/block}}
+{{block 'script'}}
+    
+    <script>
+        // 为表单添加提交事件
+        $('#loginForm').on('submit',function(){
+            // 获取表单中用户输入的内容
+            var result = serializeToJson($(this));
+            // 判断用户没有输入邮箱
+            if(result.email.trim().length == 0){
+                alert("邮箱不能为空!");
+                return false;
+            }
+            // 判断用户没有输入密码
+            if(result.password.trim().length == 0){
+                alert("密码不能为空!");
+                return false;
+            }
+            console.log(result);
+            // 阻止表单默认行为
+            // return false;
+        })
+    </script>
+{{/block}}

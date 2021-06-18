@@ -1,0 +1,60 @@
+body {
+    background: #3a3a3a;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+::selection {
+    background-color: #3a3a3a;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3a3a3a;
+    border-radius: 5px;
+}
+
+section {
+    padding-top: 20px;
+}
+
+.navbar-header .logo {
+    line-height: 50px;
+    background-size: contain;
+}
+
+#article .container,
+#comment .container {
+    border-radius: 6px;
+    background: #fff;
+}
+
+#article {
+    padding-top: 70px;
+}
+
+.article-content {
+    height: 70vh;
+    min-height: 300px;
+    padding: 0 20px;
+}
+
+.comment-content {
+    height: 60px;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.comment-form {
+    padding-bottom: 10px;
+}
+
+.comment-info {
+    padding-top: 10px;
+}

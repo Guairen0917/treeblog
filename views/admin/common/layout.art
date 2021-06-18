@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客后台</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/base.css">
+    <!-- 主模板 其他要继承 独特模板需要引入的坑 -->
+    {{block 'link'}}{{/block}}
+</head>
+
+<body>
+    {{block 'main'}}{{/block}}
+        <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+        <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/admin/js/common.js"></script>
+    {{block 'script'}}{{/block}}
+</body>
+
+</html>

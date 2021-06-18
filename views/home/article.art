@@ -1,0 +1,67 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+  <link rel="stylesheet" href="/home/css/article.css">
+{{/block}}
+
+{{block 'main'}}
+    {{include './common/header.art'}}
+    <!-- 文章框架 -->
+    <section id="article">
+        <div class="container">
+            <div class="row col-md-12">
+                <div class="article-header text-center">
+                    <h2 class="article-title">{{article.title}}</h2>
+                    <div class="article-info">
+                        <span class="author text-primary">{{article.author.username}}</span>
+                        <span class="text-muted">{{dateFormat(article.publishDate,'yyyy-mm-dd')}}</span>
+                    </div>
+                </div>
+                <div class="article-content">
+                    {{@article.content}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 文章框架 -->
+    <section  id="comment">
+        <div class="container">
+            <!-- 评论 -->
+            <h4>评论</h4>
+            {{if userInfo}}
+            <form action="/home/comment" class="comment-form" method="post">
+                <input type="hidden" name="uid" value="{{@userInfo._id}}">
+                <input type="hidden" name="aid" value="{{@article._id}}">
+                <textarea name="content" class="comment" style="resize: none;width: 100%;height: 60px;"></textarea>
+                <div class="items">
+                    <input type="submit" value="评论">
+                </div>
+            </form>
+            {{else}}
+            <div>
+                <h2 class="text-center">登录才能评论哦~</h2>
+            </div>
+            {{/if}}
+            <!-- 评论 -->
+        </div>
+    </section>
+
+    <section id="comment">
+        <div class="container">
+            <div class="comment-list">
+                {{each commentList}}
+                <div class="mb10">
+                    <div class="comment-info">
+                        <span class="author text-primary">{{$value.uid.username}}</span>
+                        <span class="text-muted">{{dateFormat($value.time,'yyyy-mm-dd')}}</span>
+                        <span>{{$value.uid.email}}</span>
+                    </div>
+                    <div class="comment-content">{{$value.content}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <!-- 文章框架 -->
+
+{{/block}}

@@ -1,0 +1,51 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+    <style>
+        body {
+            background: #3a3a3a;
+        }
+        
+        #modify {
+            padding-top: 25vh;
+        }
+
+        .navbar-header .logo{
+            line-height:50px;
+            background-size:contain;
+        }
+
+        #modify .container {
+            padding: 10px 10px;
+            border-radius: 6px;
+            background: #fff;
+        }
+    </style>
+{{/block}}
+
+{{block 'main'}}
+    {{include './common/header.art'}}
+    <section id="modify">
+        <div class="container">
+            <h2 class="text-center">修改个人信息</h2>
+            <form action="/home/user-modify-fn?id={{@user._id}}" class="form-container" method="post">
+                <div class="form-group">
+                    <label>更改用户名</label>
+                    <input name="username" type="text" class="form-control" placeholder="取一个好听的名字" value="{{user && user.username}}">
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input name="email" type="email" class="form-control" placeholder="注册的邮箱" value="{{user && user.email}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>新密码</label>
+                    <input name="password" type="text" class="form-control" placeholder="这是我们之间的秘密" value="{{user && user.password}}">
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="修改">
+                </div>
+            </form>
+        </div>
+    </section>
+
+{{/block}}

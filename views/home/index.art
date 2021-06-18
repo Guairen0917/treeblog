@@ -1,0 +1,184 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+    <link rel="stylesheet" href="/home/css/style.css">
+    <!-- 引入要用到的字体图标 -->
+    
+    <!-- 图标库 -->
+    <!-- <link rel="stylesheet" href="/home/css/all.min.css"> -->
+    <!-- 响应式弹出层样式 -->
+    <link rel="stylesheet" href="/home/css/magnific-popup.min.css">
+{{/block}}
+
+{{block 'main'}}
+    <!-- 导航栏 Navbar -->
+    <nav class="navbar">
+        <div class="inner-width">
+            {{if userInfo}}
+            <a href="/home/secret?id={{@userInfo._id}}" class="logo"></a>
+            {{else}}
+            <a href="/home/secret" class="logo"></a>
+            {{/if}}
+            <button class="menu-toggler">
+                <!-- 三个span标签制成的主页按钮 -->
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- 导航栏弹出菜单 -->
+            <div class="navbar-menu">
+                <a href="/home/">博客</a>
+                <a href="#home">主页</a>
+                <a href="#about">建站初衷</a>
+                <a href="#works">感谢</a>
+                {{if userInfo}}
+                <a href="/home/logout">退出</a>
+                {{else}}
+                <a href="/home/logout">登录</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页 Home -->
+    <section id="home">
+        <div class="inner-width">
+            <div class="content">
+                {{if userInfo}}
+                <div class="buttons">
+                    <a href="/home/article-write">New blog</a>
+                </div>
+                {{else}}
+                <div class="buttons">
+                    <a href="/home/register">注册</a>
+                    <a href="/admin/login">登录</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </section>
+
+    <!-- 建站初衷 About -->
+    <section id="about">
+        <div class="inner-width">
+            <h1 class="section-title">建站初衷</h1>
+            <div class="about-content">
+                <img src="images/pic.jpg" alt="" class="about-pic">
+                <div class="about-text">
+                    <!-- <h2>创始人：心に描く夢のヘブンズ</h2> -->
+                    <p>
+                        一直想做一个自己的网站，所以一直在学习的路上。看到别人都有自己的技术博客，觉得都好牛13哦。自己也想来做一个独具特色的网站，我喜欢黑白色调简约风格的，看到别的大佬好像都把自己的学习笔记放上去了，咱后面也拓展功能加上去。
+                    </p>
+                    <p>我在我的网站里加入了很多我喜欢的东西，比如很多国产动画及海报，可能涉及版权问题。我是真的很喜欢这些作品才加进去的。说明你的东西很好，继续加油。如果涉及到您的权益，请联系我，侵删。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品 Works -->
+    <section id="works" class="dark">
+        <div class="inner-width">
+            <h1 class="section-title">感谢</h1>
+            <h3 class="cats">以下无排名先后，更多未展示作品也表示感谢</h3>
+            <div class="works">
+                <!-- 弹出层需要一个 href属性才能工作 -->
+                <a href="images/works/1.png" class="work">
+                    <img src="images/works/1.png" alt="">
+                    <div class="info">
+                        <h3>灵 笼</h3>
+                        <div class="cat">艺画开天、bilibili联合出品的原创网络动画作品。讲述的是地球经历一场毁灭性的浩劫，幸存的人类不得不避难于一座悬浮于空中的灯塔上，继而面对善恶对立、是非难辨等种种矛盾的故事。</div>
+                    </div>
+                </a>
+
+                <a href="images/works/2.png" class="work">
+                    <img src="images/works/2.png" alt="">
+                    <div class="info">
+                        <h3>雄兵连</h3>
+                        <div class="cat">由广州超神影业有限公司（虚拟印象工作室）出品的动画系列作品，是中国首部长篇科幻军事题材的3D热血动漫。《雄兵连》是在《超神学院》系列动画的基础上重新制作了剧情。</div>
+                    </div>
+                </a>
+
+                <a href="images/works/3.png" class="work">
+                    <img src="images/works/3.png" alt="">
+                    <div class="info">
+                        <h3>天使降临到我身边</h3>
+                        <div class="cat">改编自椋木ななつ的同名四格漫画作品，由动画工房负责制作。</div>
+                    </div>
+                </a>
+
+                <a href="images/works/4.png" class="work">
+                    <img src="images/works/4.png" alt="">
+                    <div class="info">
+                        <h3>权力的游戏</h3>
+                        <div class="cat">美国HBO电视网制作推出的一部中世纪史诗奇幻题材的电视剧。该剧改编自美国作家乔治·R·R·马丁的奇幻小说《冰与火之歌》系列。</div>
+                    </div>
+                </a>
+
+                <a href="images/works/5.png" class="work">
+                    <img src="images/works/5.png" alt="">
+                    <div class="info">
+                        <h3>神盾局特工</h3>
+                        <div class="cat">漫威电视制作的真人科幻动作剧集，是漫威电影宇宙的一部分，共七季。</div>
+                    </div>
+                </a>
+
+                <a href="images/works/6.jpg" class="work">
+                    <img src="images/works/6.jpg" alt="">
+                    <div class="info">
+                        <h3>Thinks Of Us</h3>
+                        <div class="cat">请相信这个世界仍然存在美好的人跟事物。-永远相信美好的事情即将发生-
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 Footer -->
+    <footer>
+        <div class="inner-width">
+            <div class="copyright">
+                &copy; 2021 | Wish World Peace & Epidemic End
+            </div>
+            <div class="copyright">
+                心に描く夢のヘブンズ
+            </div>
+        </div>
+    </footer>
+    <!-- Go Top BTN -->
+    <button class="goTop iconfont">&#xe614;</button>
+{{/block}}
+
+{{block 'script'}}
+    <!-- 引入jQuery -->
+    <!-- <script src="/home/lib/jquery/dist/jquery.min.js"></script> -->
+    <!-- 引入弹出层magnific-popup插件 -->
+    <script src="/home/js/magnific-popup.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if(this.scrollY > 20){
+            $(".navbar").addClass("sticky");
+            $(".goTop").fadeIn();
+            }
+            else{
+            $(".navbar").removeClass("sticky");
+            $(".goTop").fadeOut();
+            }
+        });
+
+        $(".goTop").click(function(){scroll(0,0)});
+
+        $('.menu-toggler').click(function(){
+            $(this).toggleClass("active");
+            $(".navbar-menu").toggleClass("active");
+        });
+
+        $(".works").magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery:{enabled:true}
+        });
+    });
+    </script>
+{{/block}}
